@@ -1,25 +1,26 @@
 #include <iostream>
-#include <list>
 using namespace std;
 
 int main() {
 
-    int n, d, value;
-    list<int> myList;
+    int n, d;
     cin >> n >> d;
-    while(n--) {
-        cin >> value;
-        myList.push_back(value);
+    int arr[n], arr2[n];
+    for(int i = 0; i < n; i++) {
+        cin >> arr[i];
     }
 
-    while(d--) {
-        int temp = myList.front();
-        myList.push_back(temp);
-        myList.pop_front();
+    d = d % n;
+    for(int i = 0; i < n; i++) {
+        if(i-d >= 0) {
+            arr2[i-d] = arr[i];
+        } else {
+            arr2[n-d+i] = arr[i];
+        }
     }
 
-    for(auto it = myList.begin(); it != myList.end(); it++) {
-        cout << *it << " ";
+    for(int i = 0; i < n; i++) {
+        cout << arr2[i] << " ";
     }
     cout << endl;
 
